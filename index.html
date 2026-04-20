@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Isaiah Choi · Dartmouth '27</title>
+<meta name="description" content="Isaiah Choi. Applied Mathematics and Chemical Engineering at Dartmouth. Quantitative research, markets, machine learning." />
+<meta name="theme-color" content="#1E2F8F" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
+
+<style>
+  /* ------------------------------------------------------------------
+     Design tokens, cobalt and indigo
+     ------------------------------------------------------------------ */
+  :root {
+    --bg:            #1E2F8F;
+    --bg-deeper:     #162272;
+    --bg-card:       #19266F;
+    --bg-hover:      #1F2E84;
+
+    --border:        rgba(201, 212, 245, 0.06);
+    --border-strong: rgba(201, 212, 245, 0.14);
+
+    --text:          #E8ECF5;
+    --text-muted:    #9BA6C9;
+    --text-subtle:   #7985AA;
+
+    --accent:        #C9D4F5;
+    --accent-soft:   #B8C8EE;
+
+    --font-serif: 'Instrument Serif', 'Times New Roman', serif;
+    --font-sans:  'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-mono:  'JetBrains Mono', 'SF Mono', ui-monospace, Consolas, monospace;
+
+    --max:         1100px;
+    --gutter:      clamp(1.5rem, 5vw, 2.5rem);
+    --section-gap: clamp(4.5rem, 9vh, 7rem);
+
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* ------------------------------------------------------------------
+     Reset
+     ------------------------------------------------------------------ */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  img, svg { display: block; max-width: 100%; }
+  ul { list-style: none; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.7;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Atmospheric gradient, fixed behind content */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+      radial-gradient(ellipse 100% 60% at 80% 0%, rgba(70, 55, 175, 0.55), transparent 55%),
+      radial-gradient(ellipse 90% 55% at 15% 100%, rgba(85, 125, 215, 0.40), transparent 55%),
+      radial-gradient(ellipse 60% 40% at 55% 55%, rgba(60, 90, 200, 0.18), transparent 65%);
+  }
+
+  /* Soft matte noise on top */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.04;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+
+  ::selection { background: var(--accent); color: var(--bg-deeper); }
+
+  a { color: inherit; text-decoration: none; transition: color 0.25s var(--ease); }
+  a:focus-visible {
+    outline: 1px solid var(--accent);
+    outline-offset: 4px;
+    border-radius: 2px;
+  }
+
+  /* ------------------------------------------------------------------
+     Layout container
+     ------------------------------------------------------------------ */
+  .container {
+    position: relative;
+    z-index: 2;
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+  }
+
+  /* ------------------------------------------------------------------
+     Nav
+     ------------------------------------------------------------------ */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 50;
+    background: rgba(20, 31, 105, 0.78);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 1.1rem var(--gutter);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .nav-logo {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    letter-spacing: 0.04em;
+    color: var(--text);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+  }
+  .nav-logo::before {
+    content: '';
+    display: inline-block;
+    width: 6px; height: 6px;
+    background: var(--accent);
+    transform: rotate(45deg);
+  }
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    position: relative;
+  }
+  .nav-links a::before {
+    content: '';
+    position: absolute;
+    left: 0; right: 100%;
+    bottom: -4px;
+    height: 1px;
+    background: var(--accent);
+    transition: right 0.3s var(--ease);
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-links a:hover::before { right: 0; }
+  @media (max-width: 640px) { .nav-links { display: none; } }
+
+  /* ------------------------------------------------------------------
+     Hero
+     ------------------------------------------------------------------ */
+  .hero {
+    min-height: 85svh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 0 5rem;
+  }
+  .hero-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+  .hero-primary {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: clamp(1.5rem, 4vw, 2.75rem);
+    align-items: center;
+  }
+  .hero-photo img {
+    width: 160px;
+    height: 160px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 7px;
+    background: var(--bg-card);
+  }
+  .hero-id {
+    display: flex;
+    flex-direction: column;
+  }
+  .hero-name {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(3rem, 8.5vw, 5.75rem);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+  .hero-subtitle {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .hero-contact {
+    display: flex;
+    gap: 1.75rem;
+    flex-wrap: wrap;
+  }
+  .contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+  }
+  .contact-link svg { width: 15px; height: 15px; stroke-width: 1.75; }
+  .contact-link:hover { color: var(--accent); }
+
+  @media (max-width: 640px) {
+    .hero-primary {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      justify-items: start;
+    }
+    .hero-photo img {
+      width: 120px;
+      height: 120px;
+    }
+  }
+
+  /* ------------------------------------------------------------------
+     Sections
+     ------------------------------------------------------------------ */
+  .section {
+    position: relative;
+    padding: var(--section-gap) 0;
+  }
+  .section + .section { border-top: 1px solid var(--border); }
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1.25rem;
+    margin-bottom: 3rem;
+  }
+  .section-number {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    line-height: 1;
+    letter-spacing: -0.01em;
+  }
+
+  /* ------------------------------------------------------------------
+     About
+     ------------------------------------------------------------------ */
+  .about-text {
+    max-width: 680px;
+    color: var(--text-muted);
+    font-size: 1.0625rem;
+    line-height: 1.8;
+  }
+  .about-text strong { color: var(--text); font-weight: 500; }
+  .about-text em {
+    color: var(--text);
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.1em;
+  }
+
+  /* ------------------------------------------------------------------
+     Projects
+     ------------------------------------------------------------------ */
+  .projects { display: flex; flex-direction: column; gap: 1rem; }
+  .project-card {
+    display: block;
+    padding: 2rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    transition:
+      background 0.3s var(--ease),
+      border-color 0.3s var(--ease);
+  }
+  .project-card:hover {
+    background: var(--bg-hover);
+    border-color: var(--border-strong);
+  }
+  .project-card:hover .project-name { color: var(--accent); }
+  .project-card:hover .project-arrow { transform: translate(3px, -3px); color: var(--accent); }
+
+  .project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.1rem;
+  }
+  .project-name {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text);
+    transition: color 0.25s var(--ease);
+  }
+  .project-arrow {
+    color: var(--text-muted);
+    transition: transform 0.3s var(--ease), color 0.25s var(--ease);
+  }
+  .project-arrow svg { width: 18px; height: 18px; stroke-width: 1.75; }
+
+  .project-desc {
+    color: var(--text-muted);
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    max-width: 700px;
+  }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .project-tag {
+    font-family: var(--font-mono);
+    font-size: 0.7188rem;
+    color: var(--text-subtle);
+    padding: 0.3rem 0.65rem;
+    border: 1px solid var(--border);
+    letter-spacing: 0.02em;
+  }
+
+  /* ------------------------------------------------------------------
+     Research
+     ------------------------------------------------------------------ */
+  .research-item {
+    padding: 1.75rem 0;
+    border-top: 1px solid var(--border);
+  }
+  .research-item:last-child { border-bottom: 1px solid var(--border); }
+  .research-meta {
+    font-family: var(--font-mono);
+    font-size: 0.7188rem;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    margin-bottom: 0.55rem;
+    text-transform: uppercase;
+  }
+  .research-title {
+    font-size: 1.125rem;
+    color: var(--text);
+    margin-bottom: 0.55rem;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+    max-width: 780px;
+  }
+  .research-desc {
+    color: var(--text-muted);
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    max-width: 780px;
+  }
+
+  /* ------------------------------------------------------------------
+     Inline compact lists, skills and interests
+     ------------------------------------------------------------------ */
+  .inline-list {
+    font-family: var(--font-mono);
+    font-size: 0.8438rem;
+    color: var(--text-muted);
+    line-height: 2;
+    max-width: 900px;
+    letter-spacing: 0.01em;
+  }
+  .inline-list span {
+    display: inline-block;
+    margin-right: 0.35rem;
+  }
+  .inline-list span + span::before {
+    content: '·';
+    color: var(--text-subtle);
+    margin-right: 0.55rem;
+    opacity: 0.7;
+  }
+
+  .section--compact { padding: clamp(3rem, 6vh, 4.5rem) 0; }
+  .section--compact .section-header { margin-bottom: 1.75rem; }
+
+  /* ------------------------------------------------------------------
+     Footer
+     ------------------------------------------------------------------ */
+  .footer {
+    position: relative;
+    z-index: 2;
+    padding: 3.5rem 0 3rem;
+    border-top: 1px solid var(--border);
+  }
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+  }
+  .footer-contact a {
+    color: var(--text-muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .footer-contact a:hover { color: var(--accent); }
+  .footer-contact svg { width: 13px; height: 13px; stroke-width: 1.75; }
+
+  .footer-meta {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-subtle);
+    text-align: right;
+    line-height: 1.8;
+    letter-spacing: 0.02em;
+  }
+
+  /* ------------------------------------------------------------------
+     Fade-in
+     ------------------------------------------------------------------ */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+  }
+  .fade-in.visible { opacity: 1; transform: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .fade-in { opacity: 1; transform: none; transition: none; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Primary">
+  <div class="nav-inner">
+    <a href="#top" class="nav-logo" aria-label="Isaiah Choi, home">IC</a>
+    <ul class="nav-links">
+      <li><a href="#about">about</a></li>
+      <li><a href="#projects">projects</a></li>
+      <li><a href="#research">research</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="top">
+
+  <!-- ========== HERO ========== -->
+  <section class="hero" aria-labelledby="hero-name">
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-primary">
+          <div class="hero-photo">
+            <img src="photo.jpg" alt="Portrait of Isaiah Choi" width="160" height="160" loading="eager" />
+          </div>
+          <div class="hero-id">
+            <h1 class="hero-name" id="hero-name">Isaiah Choi</h1>
+            <p class="hero-subtitle">Dartmouth '27</p>
+          </div>
+        </div>
+        <div class="hero-contact">
+          <a href="mailto:isaiah.j.choi.27@dartmouth.edu" class="contact-link">
+            <i data-lucide="mail" aria-hidden="true"></i>
+            <span>Email</span>
+          </a>
+          <a href="https://github.com/IsaiahChoi" class="contact-link" target="_blank" rel="noopener noreferrer">
+            <i data-lucide="github" aria-hidden="true"></i>
+            <span>GitHub</span>
+          </a>
+          <a href="https://www.linkedin.com/in/isaiah-choi-572558290/" class="contact-link" target="_blank" rel="noopener noreferrer">
+            <i data-lucide="linkedin" aria-hidden="true"></i>
+            <span>LinkedIn</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ABOUT ========== -->
+  <section class="section fade-in" id="about" aria-labelledby="about-title">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-number">01.</span>
+        <h2 class="section-title" id="about-title">About</h2>
+      </div>
+      <p class="about-text">
+        I grew up in greater Boston and am currently studying Applied Mathematics and Chemical Engineering at Dartmouth. Most of my time goes to the overlap between quantitative research, markets, and machine learning. I've been working on deep-learning pipelines on neural data in the Touboul Lab at Brandeis, running independent quant research on USD/JPY and Japanese non-ferrous metals equities, and recently wrapped the Tuck Business Bridge with a DCF valuation of Cricut I'm genuinely proud of. I'm drawn to the places where careful modeling meets live markets and to the patient, craft-level work it takes to make them meet well.
+      </p>
+    </div>
+  </section>
+
+  <!-- ========== PROJECTS ========== -->
+  <section class="section fade-in" id="projects" aria-labelledby="proj-title">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-number">02.</span>
+        <h2 class="section-title" id="proj-title">Featured Projects</h2>
+      </div>
+
+      <div class="projects">
+
+        <a class="project-card" href="https://github.com/IsaiahChoi/ER-Systematic" target="_blank" rel="noopener noreferrer" aria-label="ER-Systematic on GitHub">
+          <div class="project-header">
+            <span class="project-name">ER-Systematic</span>
+            <span class="project-arrow" aria-hidden="true"><i data-lucide="arrow-up-right"></i></span>
+          </div>
+          <p class="project-desc">
+            A systematic equity-research toolkit built around FX-driven arbitrage signals. Implements the USD/JPY × Japanese non-ferrous metals thesis end-to-end: data ingest, HAC-robust OLS beta estimation, and Random Forest directional models for names like Sumitomo, Mitsubishi Materials, and Mitsui Mining.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">Pandas</span>
+            <span class="project-tag">Scikit-Learn</span>
+            <span class="project-tag">Statsmodels</span>
+          </div>
+        </a>
+
+        <a class="project-card" href="https://github.com/IsaiahChoi/NFL-Odds" target="_blank" rel="noopener noreferrer" aria-label="NFL-Odds on GitHub">
+          <div class="project-header">
+            <span class="project-name">NFL-Odds</span>
+            <span class="project-arrow" aria-hidden="true"><i data-lucide="arrow-up-right"></i></span>
+          </div>
+          <p class="project-desc">
+            An odds-modeling engine for NFL markets. Pulls lines and game data, fits probability models against market-implied prices, and flags situations where the book's edge looks thin. Part research project, part fan hobby, all about finding where Vegas might be wrong.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">NumPy</span>
+            <span class="project-tag">Regression</span>
+            <span class="project-tag">Sports Analytics</span>
+          </div>
+        </a>
+
+        <a class="project-card" href="https://github.com/IsaiahChoi/10k-NLP-engine" target="_blank" rel="noopener noreferrer" aria-label="10k-NLP-engine on GitHub">
+          <div class="project-header">
+            <span class="project-name">10k-NLP-engine</span>
+            <span class="project-arrow" aria-hidden="true"><i data-lucide="arrow-up-right"></i></span>
+          </div>
+          <p class="project-desc">
+            An NLP pipeline for parsing SEC 10-K filings at scale. Segments and cleans the messy EDGAR disclosure format, then extracts tone and risk-language signal from Items 1A and 7, producing features usable in downstream equity models.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">NLP</span>
+            <span class="project-tag">SEC EDGAR</span>
+            <span class="project-tag">PyTorch</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== RESEARCH ========== -->
+  <section class="section fade-in" id="research" aria-labelledby="research-title">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-number">03.</span>
+        <h2 class="section-title" id="research-title">Research &amp; Writing</h2>
+      </div>
+
+      <div>
+        <article class="research-item">
+          <div class="research-meta">Peer-reviewed · PLOS Computational Biology</div>
+          <h3 class="research-title">Deep-learning classification of high-dimensional neural dynamics</h3>
+          <p class="research-desc">Co-authored paper out of the Touboul Lab. PyTorch models trained on MATLAB-processed recordings classify dynamical regimes at roughly 97% accuracy on held-out data.</p>
+        </article>
+
+        <article class="research-item">
+          <div class="research-meta">Independent Research · Ongoing</div>
+          <h3 class="research-title">FX-driven equity arbitrage: USD/JPY × Japanese non-ferrous metals</h3>
+          <p class="research-desc">Original thesis linking USD/JPY regimes to the cross-section of Japanese miners: Sumitomo, Mitsubishi Materials, Mitsui Mining. HAC-robust OLS betas of 0.164 to 0.227 at p &lt; 0.025; a Random Forest classifier reached 60.1% directional accuracy on Mitsubishi Materials (5711). Now extending to quanto derivative pricing.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SKILLS ========== -->
+  <section class="section section--compact fade-in" id="skills" aria-labelledby="skills-title">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-number">04.</span>
+        <h2 class="section-title" id="skills-title">Skills</h2>
+      </div>
+      <p class="inline-list" aria-label="Skills list">
+        <span>Python</span><span>Pandas</span><span>NumPy</span><span>PyTorch</span><span>Scikit-Learn</span><span>SQL</span><span>Java</span><span>MATLAB</span><span>Bloomberg Terminal</span><span>Excel</span><span>DCF</span><span>Comparable Companies</span><span>Financial Modeling</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- ========== INTERESTS ========== -->
+  <section class="section section--compact fade-in" id="interests" aria-labelledby="interests-title">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-number">05.</span>
+        <h2 class="section-title" id="interests-title">Interests</h2>
+      </div>
+      <p class="inline-list" aria-label="Personal interests">
+        <span>Singing</span><span>Piano</span><span>Guitar</span><span>Latin</span><span>Football</span><span>Boston sports</span>
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-contact">
+        <a href="mailto:isaiah.j.choi.27@dartmouth.edu">
+          <i data-lucide="mail" aria-hidden="true"></i> isaiah.j.choi.27@dartmouth.edu
+        </a>
+        <a href="https://github.com/IsaiahChoi" target="_blank" rel="noopener noreferrer">
+          <i data-lucide="github" aria-hidden="true"></i> github.com/IsaiahChoi
+        </a>
+        <a href="https://www.linkedin.com/in/isaiah-choi-572558290/" target="_blank" rel="noopener noreferrer">
+          <i data-lucide="linkedin" aria-hidden="true"></i> linkedin.com/in/isaiah-choi
+        </a>
+      </div>
+      <div class="footer-meta">
+        <p>Greater Boston</p>
+        <p>© MMXXVI · Isaiah Choi</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    function initIcons() {
+      if (window.lucide && typeof window.lucide.createIcons === 'function') {
+        window.lucide.createIcons({ attrs: { 'stroke-width': 1.75 } });
+      }
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initIcons);
+    } else {
+      initIcons();
+    }
+    window.addEventListener('load', initIcons);
+
+    var targets = document.querySelectorAll('.fade-in');
+    if (!('IntersectionObserver' in window)) {
+      targets.forEach(function (el) { el.classList.add('visible'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    targets.forEach(function (el) { io.observe(el); });
+  })();
+</script>
+
+</body>
+</html>
