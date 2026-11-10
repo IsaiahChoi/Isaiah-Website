@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Isaiah Choi · Dartmouth '27</title>
-<meta name="description" content="Isaiah Choi. Applied Mathematics and Chemical Engineering at Dartmouth. Quantitative research, markets, machine learning." />
+<meta name="description" content="Isaiah Choi. Applied Mathematics and Engineering Sciences at Dartmouth. Quantitative research on markets, optimization, and machine learning." />
 <meta name="theme-color" content="#1E2F8F" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -288,53 +288,11 @@
     font-size: 1.1em;
   }
 
+  .about-text + .about-text { margin-top: 1.25rem; }
+
   /* ------------------------------------------------------------------
-     Projects
+     Tags
      ------------------------------------------------------------------ */
-  .projects { display: flex; flex-direction: column; gap: 1rem; }
-  .project-card {
-    display: block;
-    padding: 2rem;
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    transition:
-      background 0.3s var(--ease),
-      border-color 0.3s var(--ease);
-  }
-  .project-card:hover {
-    background: var(--bg-hover);
-    border-color: var(--border-strong);
-  }
-  .project-card:hover .project-name { color: var(--accent); }
-  .project-card:hover .project-arrow { transform: translate(3px, -3px); color: var(--accent); }
-
-  .project-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 1rem;
-    margin-bottom: 1.1rem;
-  }
-  .project-name {
-    font-family: var(--font-mono);
-    font-size: 1rem;
-    font-weight: 500;
-    color: var(--text);
-    transition: color 0.25s var(--ease);
-  }
-  .project-arrow {
-    color: var(--text-muted);
-    transition: transform 0.3s var(--ease), color 0.25s var(--ease);
-  }
-  .project-arrow svg { width: 18px; height: 18px; stroke-width: 1.75; }
-
-  .project-desc {
-    color: var(--text-muted);
-    font-size: 0.9375rem;
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
-    max-width: 700px;
-  }
   .project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
   .project-tag {
     font-family: var(--font-mono);
@@ -375,6 +333,16 @@
     line-height: 1.7;
     max-width: 780px;
   }
+  .research-desc strong { color: var(--text); font-weight: 500; }
+  .research-desc + .research-desc { margin-top: 0.75rem; }
+  .research-item .project-tags { margin-top: 1.1rem; }
+  .research-links {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+  }
+  .project-tags + .research-meta { margin-top: 1.75rem; }
 
   /* ------------------------------------------------------------------
      Inline compact lists, skills and interests
@@ -466,8 +434,9 @@
     <a href="#top" class="nav-logo" aria-label="Isaiah Choi, home">IC</a>
     <ul class="nav-links">
       <li><a href="#about">about</a></li>
-      <li><a href="#projects">projects</a></li>
       <li><a href="#research">research</a></li>
+      <li><a href="#experience">experience</a></li>
+      <li><a href="#education">education</a></li>
     </ul>
   </div>
 </nav>
@@ -484,7 +453,7 @@
           </div>
           <div class="hero-id">
             <h1 class="hero-name" id="hero-name">Isaiah Choi</h1>
-            <p class="hero-subtitle">Dartmouth '27</p>
+            <p class="hero-subtitle">Applied Mathematics and Engineering Sciences, Dartmouth '27</p>
           </div>
         </div>
         <div class="hero-contact">
@@ -513,70 +482,14 @@
         <h2 class="section-title" id="about-title">About</h2>
       </div>
       <p class="about-text">
-        I grew up in greater Boston and am currently studying Applied Mathematics and Chemical Engineering at Dartmouth. Most of my time goes to the overlap between quantitative research, markets, and machine learning. I've been working on deep-learning pipelines on neural data in the Touboul Lab at Brandeis, running independent quant research on USD/JPY and Japanese non-ferrous metals equities, and recently wrapped the Tuck Business Bridge with a DCF valuation of Cricut I'm genuinely proud of. I'm drawn to the places where careful modeling meets live markets and to the patient, craft-level work it takes to make them meet well.
+        I grew up in the Boston area, with stretches in Alaska, Dili (Timor-Leste), and Tbilisi (Georgia). I started college at Brandeis, where I joined a computational neuroscience lab as a freshman, then transferred to Dartmouth to add engineering. I study Applied Mathematics (Honors) and Engineering Sciences modified with Chemistry.
       </p>
-    </div>
-  </section>
-
-  <!-- ========== PROJECTS ========== -->
-  <section class="section fade-in" id="projects" aria-labelledby="proj-title">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-number">02.</span>
-        <h2 class="section-title" id="proj-title">Featured Projects</h2>
-      </div>
-
-      <div class="projects">
-
-        <a class="project-card" href="https://github.com/IsaiahChoi/ER-Systematic" target="_blank" rel="noopener noreferrer" aria-label="ER-Systematic on GitHub">
-          <div class="project-header">
-            <span class="project-name">ER-Systematic</span>
-            <span class="project-arrow" aria-hidden="true"><i data-lucide="arrow-up-right"></i></span>
-          </div>
-          <p class="project-desc">
-            A systematic equity-research toolkit built around FX-driven arbitrage signals. Implements the USD/JPY × Japanese non-ferrous metals thesis end-to-end: data ingest, HAC-robust OLS beta estimation, and Random Forest directional models for names like Sumitomo, Mitsubishi Materials, and Mitsui Mining.
-          </p>
-          <div class="project-tags">
-            <span class="project-tag">Python</span>
-            <span class="project-tag">Pandas</span>
-            <span class="project-tag">Scikit-Learn</span>
-            <span class="project-tag">Statsmodels</span>
-          </div>
-        </a>
-
-        <a class="project-card" href="https://github.com/IsaiahChoi/NFL-Odds" target="_blank" rel="noopener noreferrer" aria-label="NFL-Odds on GitHub">
-          <div class="project-header">
-            <span class="project-name">NFL-Odds</span>
-            <span class="project-arrow" aria-hidden="true"><i data-lucide="arrow-up-right"></i></span>
-          </div>
-          <p class="project-desc">
-            An odds-modeling engine for NFL markets. Pulls lines and game data, fits probability models against market-implied prices, and flags situations where the book's edge looks thin. Part research project, part fan hobby, all about finding where Vegas might be wrong.
-          </p>
-          <div class="project-tags">
-            <span class="project-tag">Python</span>
-            <span class="project-tag">NumPy</span>
-            <span class="project-tag">Regression</span>
-            <span class="project-tag">Sports Analytics</span>
-          </div>
-        </a>
-
-        <a class="project-card" href="https://github.com/IsaiahChoi/10k-NLP-engine" target="_blank" rel="noopener noreferrer" aria-label="10k-NLP-engine on GitHub">
-          <div class="project-header">
-            <span class="project-name">10k-NLP-engine</span>
-            <span class="project-arrow" aria-hidden="true"><i data-lucide="arrow-up-right"></i></span>
-          </div>
-          <p class="project-desc">
-            An NLP pipeline for parsing SEC 10-K filings at scale. Segments and cleans the messy EDGAR disclosure format, then extracts tone and risk-language signal from Items 1A and 7, producing features usable in downstream equity models.
-          </p>
-          <div class="project-tags">
-            <span class="project-tag">Python</span>
-            <span class="project-tag">NLP</span>
-            <span class="project-tag">SEC EDGAR</span>
-            <span class="project-tag">PyTorch</span>
-          </div>
-        </a>
-
-      </div>
+      <p class="about-text">
+        Most of my work is quantitative research on markets, using probability, optimization, and machine learning. The thread running through it is whether a result deserves to be believed: decoding neural data against shuffled-label controls, pre-registering a market-efficiency test and reporting the null when it didn't replicate, and working out when a portfolio optimizer's shadow prices can be trusted. I use AI tools heavily to build, and I make verification the step they can't skip.
+      </p>
+      <p class="about-text">
+        This past summer I was a Product Development Summer Analyst in J.P. Morgan's Securities Services Leadership Program in Boston, learning how funds are built and serviced.
+      </p>
     </div>
   </section>
 
@@ -584,49 +497,190 @@
   <section class="section fade-in" id="research" aria-labelledby="research-title">
     <div class="container">
       <div class="section-header">
-        <span class="section-number">03.</span>
-        <h2 class="section-title" id="research-title">Research &amp; Writing</h2>
+        <span class="section-number">02.</span>
+        <h2 class="section-title" id="research-title">Research</h2>
       </div>
 
       <div>
         <article class="research-item">
-          <div class="research-meta">Peer-reviewed · PLOS Computational Biology</div>
-          <h3 class="research-title">Deep-learning classification of high-dimensional neural dynamics</h3>
-          <p class="research-desc">Co-authored paper out of the Touboul Lab. PyTorch models trained on MATLAB-processed recordings classify dynamical regimes at roughly 97% accuracy on held-out data.</p>
+          <div class="research-meta">PLOS Computational Biology · 2026 · Second of five authors</div>
+          <h3 class="research-title">Latent encoding of movement in primary visual cortex</h3>
+          <p class="research-desc">H. Germaine, <strong>I. Choi</strong>, S. D. Van Hooser, J. Ribot, J. D. Touboul · Brandeis University and Collège de France (CNRS)</p>
+          <p class="research-desc">The textbook picture is that visual cortex lays out each stimulus feature as a preference map, but for temporal frequency and speed that map is nearly flat. I built and ran the CNN decoding analyses: with 10-fold cross-validation against shuffled-label controls, temporal frequency, direction, and speed were all decodable from optical imaging of cat visual cortex, even from patches about 0.12 mm across. The information is there, just not in the map.</p>
+          <div class="project-tags">
+            <span class="project-tag">PyTorch</span>
+            <span class="project-tag">CNNs</span>
+            <span class="project-tag">Cross-validation</span>
+          </div>
+          <div class="research-links">
+            <a href="https://doi.org/10.1371/journal.pcbi.1014826" class="contact-link" target="_blank" rel="noopener noreferrer">
+              <i data-lucide="file-text" aria-hidden="true"></i>
+              <span>Paper</span>
+            </a>
+            <a href="https://doi.org/10.5281/zenodo.18187370" class="contact-link" target="_blank" rel="noopener noreferrer">
+              <i data-lucide="database" aria-hidden="true"></i>
+              <span>Data</span>
+            </a>
+          </div>
         </article>
 
         <article class="research-item">
-          <div class="research-meta">Independent Research · Ongoing</div>
-          <h3 class="research-title">FX-driven equity arbitrage: USD/JPY × Japanese non-ferrous metals</h3>
-          <p class="research-desc">Original thesis linking USD/JPY regimes to the cross-section of Japanese miners: Sumitomo, Mitsubishi Materials, Mitsui Mining. HAC-robust OLS betas of 0.164 to 0.227 at p &lt; 0.025; a Random Forest classifier reached 60.1% directional accuracy on Mitsubishi Materials (5711). Now extending to quanto derivative pricing.</p>
+          <div class="research-meta">Independent research · Dartmouth College · 2026 to present</div>
+          <h3 class="research-title">Overnight FX and the Tokyo opening auction</h3>
+          <p class="research-desc">Japanese metal miners sell in dollars and pay costs in yen, so a weaker yen should lift their shares. Does Tokyo's opening auction fully price the overnight USD/JPY move, or does the stock keep drifting after the open? An earlier version of the question, predicting the opening gap itself, found an in-sample link that failed out of sample, and the gap isn't tradable anyway. So I reframed it around open-to-close returns and pre-registered the test: hypotheses and a power analysis locked on 2015 to 2021 data, with 2022 to 2026 data hashed and sealed until then. The effect was significant in the development years and did not replicate in the sealed sample; most of what remained came from the August 2024 yen carry unwind. I reported the null.</p>
+          <p class="research-desc">Sumitomo Metal Mining, Mitsubishi Materials, Mitsui Kinzoku · Blinded pipeline with 398 tests, built through a test-gated Claude Code workflow</p>
+          <p class="research-desc">Next: the same locked-test design in emerging markets, where opening auctions may price information less efficiently.</p>
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">Fixed-effects OLS</span>
+            <span class="project-tag">Driscoll-Kraay errors</span>
+            <span class="project-tag">Pre-registration</span>
+            <span class="project-tag">Claude Code</span>
+          </div>
+          <div class="research-links">
+            <a href="https://github.com/IsaiahChoi/ofilt-study" class="contact-link" target="_blank" rel="noopener noreferrer">
+              <i data-lucide="code" aria-hidden="true"></i>
+              <span>Code</span>
+            </a>
+            <a href="https://github.com/IsaiahChoi/ofilt-study/blob/prereg-v1/docs/PREREG_v1.md" class="contact-link" target="_blank" rel="noopener noreferrer">
+              <i data-lucide="lock" aria-hidden="true"></i>
+              <span>Pre-registration</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="research-item">
+          <div class="research-meta">ENGS 104 Optimization Methods · Thayer School of Engineering · Fall 2026</div>
+          <h3 class="research-title">The Shadow Price of Neutrality</h3>
+          <p class="research-desc">Portfolio platforms often read an optimizer's dual variables as what each risk rule costs a pod. That's exact for convex problems and stops being exact for integer ones. I priced every constraint on a $1B long/short S&amp;P 500 book (momentum alpha, six-factor risk model, neutrality, sector, gross, and liquidity limits) across 12 dates from 2008 to 2025. Liquidity was the expensive rule: halving the cap cost about a quarter of predicted alpha, while requiring zero style-factor exposure cost about 4%. I then added integer rules (minimum position sizes, name caps), graded three cheap cost estimators against certified true costs, and checked when the solver's own bounds and certificates could be trusted.</p>
+          <p class="research-desc">530+ tests, built through a gated Claude Code workflow</p>
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">Gurobi</span>
+            <span class="project-tag">Clarabel</span>
+            <span class="project-tag">Convex optimization</span>
+            <span class="project-tag">Mixed-integer optimization</span>
+          </div>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- ========== SKILLS ========== -->
-  <section class="section section--compact fade-in" id="skills" aria-labelledby="skills-title">
+  <!-- ========== EXPERIENCE ========== -->
+  <section class="section fade-in" id="experience" aria-labelledby="experience-title">
     <div class="container">
       <div class="section-header">
-        <span class="section-number">04.</span>
-        <h2 class="section-title" id="skills-title">Skills</h2>
+        <span class="section-number">03.</span>
+        <h2 class="section-title" id="experience-title">Experience</h2>
       </div>
-      <p class="inline-list" aria-label="Skills list">
-        <span>Python</span><span>Pandas</span><span>NumPy</span><span>PyTorch</span><span>Scikit-Learn</span><span>SQL</span><span>Java</span><span>MATLAB</span><span>Bloomberg Terminal</span><span>Excel</span><span>DCF</span><span>Comparable Companies</span><span>Financial Modeling</span>
-      </p>
+
+      <div>
+        <article class="research-item">
+          <div class="research-meta">J.P. Morgan, Securities Services Leadership Program · Boston, MA</div>
+          <h3 class="research-title">Product Development Summer Analyst · Summer 2026</h3>
+          <p class="research-desc">One of four summer analysts selected in Boston. Specified data and reporting requirements for fund-servicing platforms used by institutional asset managers across mutual funds, ETFs, and money market funds, and analyzed money market fund structure and NAV calculation. Placed 1st firmwide in the Global Intern Community Challenge; separately longlisted in the top 10% firmwide in the CIB AI Catalyst Challenge for proposing an agentic-AI tool to consolidate money market fund reporting.</p>
+        </article>
+
+        <article class="research-item">
+          <div class="research-meta">Touboul Laboratory, Department of Mathematics, Brandeis University · Waltham, MA</div>
+          <h3 class="research-title">Machine Learning Assistant, Computational Neuroscience · May 2024 to present</h3>
+          <p class="research-desc">Machine learning for the PLOS Computational Biology paper above, in collaboration with Jérôme Ribot's lab at the Collège de France (CNRS).</p>
+        </article>
+
+        <article class="research-item">
+          <div class="research-meta">Conflict Analytics Lab, Queen's University</div>
+          <h3 class="research-title">Machine Learning Assistant · April to September 2025</h3>
+          <p class="research-desc">Built decision-tree and random forest models to predict judicial outcomes for MyOpenCourt, a public legal-help platform.</p>
+        </article>
+      </div>
     </div>
   </section>
 
-  <!-- ========== INTERESTS ========== -->
-  <section class="section section--compact fade-in" id="interests" aria-labelledby="interests-title">
+  <!-- ========== COMPETITIONS & ACTIVITIES ========== -->
+  <section class="section fade-in" id="activities" aria-labelledby="activities-title">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-number">04.</span>
+        <h2 class="section-title" id="activities-title">Competitions &amp; Activities</h2>
+      </div>
+
+      <div>
+        <article class="research-item">
+          <p class="research-desc">IMC Prosperity 4 Global Algorithmic Trading Competition (solo, 2026): top 11 to 12% of 18,000+ teams, with a modular Python trading system covering market-making, basket and ETF arbitrage, and Black-Scholes option pricing.</p>
+        </article>
+
+        <article class="research-item">
+          <p class="inline-list" aria-label="Activities">
+            <span>Executive Board, SIAM</span><span>Founding Member, Dartmouth AI Club</span><span>Member, Dartmouth Quant Club</span>
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== EDUCATION ========== -->
+  <section class="section fade-in" id="education" aria-labelledby="education-title">
     <div class="container">
       <div class="section-header">
         <span class="section-number">05.</span>
-        <h2 class="section-title" id="interests-title">Interests</h2>
+        <h2 class="section-title" id="education-title">Education</h2>
       </div>
-      <p class="inline-list" aria-label="Personal interests">
-        <span>Singing</span><span>Piano</span><span>Guitar</span><span>Latin</span><span>Football</span><span>Boston sports</span>
-      </p>
+
+      <div>
+        <article class="research-item">
+          <h3 class="research-title">Dartmouth College</h3>
+          <p class="research-desc">A.B., Applied Mathematics (Honors Track) and Engineering Sciences Modified with Chemistry · Expected June 2027</p>
+          <p class="research-desc">Selected coursework: Mathematical Finance, Optimization Methods, Probability, Discrete and Probabilistic Systems, Linear Algebra (Honors), Numerical Methods and Big Data</p>
+        </article>
+
+        <article class="research-item">
+          <h3 class="research-title">Tuck Business Bridge Program</h3>
+          <p class="research-desc">December 2025 · Financial accounting, corporate finance, and valuation; team capstone valuing Cricut (CRCT)</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SKILLS & INTERESTS ========== -->
+  <section class="section section--compact fade-in" id="skills" aria-labelledby="skills-title">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-number">06.</span>
+        <h2 class="section-title" id="skills-title">Skills &amp; Interests</h2>
+      </div>
+      <div class="research-meta" id="skills-label">Skills</div>
+      <div class="project-tags" role="list" aria-labelledby="skills-label">
+        <span class="project-tag" role="listitem">Python</span>
+        <span class="project-tag" role="listitem">pandas</span>
+        <span class="project-tag" role="listitem">NumPy</span>
+        <span class="project-tag" role="listitem">scikit-learn</span>
+        <span class="project-tag" role="listitem">PyTorch</span>
+        <span class="project-tag" role="listitem">statsmodels</span>
+        <span class="project-tag" role="listitem">pytest</span>
+        <span class="project-tag" role="listitem">MATLAB</span>
+        <span class="project-tag" role="listitem">Java</span>
+        <span class="project-tag" role="listitem">Git</span>
+        <span class="project-tag" role="listitem">Gurobi</span>
+        <span class="project-tag" role="listitem">Clarabel</span>
+        <span class="project-tag" role="listitem">Convex and mixed-integer optimization</span>
+        <span class="project-tag" role="listitem">Factor risk models</span>
+        <span class="project-tag" role="listitem">Pre-registered testing</span>
+        <span class="project-tag" role="listitem">Out-of-sample validation</span>
+        <span class="project-tag" role="listitem">Monte Carlo</span>
+        <span class="project-tag" role="listitem">Black-Scholes</span>
+        <span class="project-tag" role="listitem">DCF and comps</span>
+        <span class="project-tag" role="listitem">Bloomberg Terminal</span>
+        <span class="project-tag" role="listitem">Excel</span>
+      </div>
+      <div class="research-meta" id="interests-label">Interests</div>
+      <div class="project-tags" role="list" aria-labelledby="interests-label">
+        <span class="project-tag" role="listitem">Chess</span>
+        <span class="project-tag" role="listitem">Piano</span>
+        <span class="project-tag" role="listitem">Singing</span>
+        <span class="project-tag" role="listitem">Guitar</span>
+        <span class="project-tag" role="listitem">Latin</span>
+        <span class="project-tag" role="listitem">Boston sports</span>
+      </div>
     </div>
   </section>
 
@@ -644,7 +698,7 @@
           <i data-lucide="github" aria-hidden="true"></i> github.com/IsaiahChoi
         </a>
         <a href="https://www.linkedin.com/in/isaiah-choi-572558290/" target="_blank" rel="noopener noreferrer">
-          <i data-lucide="linkedin" aria-hidden="true"></i> linkedin.com/in/isaiah-choi
+          <i data-lucide="linkedin" aria-hidden="true"></i> linkedin.com/in/isaiah-choi-572558290
         </a>
       </div>
       <div class="footer-meta">
